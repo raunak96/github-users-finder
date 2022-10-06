@@ -10,7 +10,6 @@ const User = () => {
 	const { getUser, user, isLoading } = useContext(GithubContext);
 	useEffect(() => {
 		getUser(username);
-		console.log("Yo", username);
 	}, [username, getUser]);
 	const {
 		name,
