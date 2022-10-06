@@ -1,12 +1,16 @@
 import { useContext, useRef } from "react";
+import AlertContext from "../../contexts/alert/AlertContext";
 import GithubContext from "../../contexts/github/GithubContext";
 
 const UserSearch = () => {
 	const inputRef = useRef();
 	const { users, searchUsers, clearUsers } = useContext(GithubContext);
+	const { setAlert } = useContext(AlertContext);
+
 	const handleSubmit = e => {
 		e.preventDefault();
-		if (inputRef.current.value === "") alert("Please enter something!");
+		if (inputRef.current.value === "")
+			setAlert("Please enter something!", "error");
 		else {
 			searchUsers(inputRef.current.value);
 			e.target.reset();

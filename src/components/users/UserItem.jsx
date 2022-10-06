@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-const UserItem = ({ user: { login: name, avatar_url } }) => {
+const UserItem = ({ user: { login: username, avatar_url } }) => {
 	return (
 		<div className="card shadow-2xl card-compact bg-base-100 glass">
 			<div className="flex-row items-center space-x-4 card-body">
@@ -13,10 +13,12 @@ const UserItem = ({ user: { login: name, avatar_url } }) => {
 					</div>
 				</div>
 				<div>
-					<h2 className="card-title text-primary-content">{name}</h2>
+					<h2 className="card-title text-primary-content">
+						{username}
+					</h2>
 					<Link
 						className="text-gray-300 text-opacity-50"
-						to={`/users/${name}`}>
+						to={`/user/${username}`}>
 						Visit Profile
 					</Link>
 				</div>

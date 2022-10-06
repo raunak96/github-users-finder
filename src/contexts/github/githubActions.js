@@ -15,3 +15,12 @@ export const getUsers = async text => {
 	} = await github.get(`/search/users?${params}`);
 	return users;
 };
+
+export const getUserDetails = async username => {
+	const params = new URLSearchParams({ sort: "created", per_page: 10 });
+	const [userData, reposData] = await Promise.all([
+		github.get(`/users/${username}`),
+		github.get(`/users/${username}/repos?${params}`),
+	]);
+	return { user: userData.data, repos: reposData.data };
+};
