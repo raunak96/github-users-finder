@@ -20,7 +20,16 @@ const RepoItem = ({ repo }) => {
 						<FaLink className="inline mr-1" /> {name}
 					</a>
 				</h3>
-				<p className="mb-3">{description}</p>
+				<p>{description}</p>
+				<div className="mb-3">
+					{repo.topics.slice(0, 4).map((topic, index) => (
+						<div
+							key={index}
+							className="mr-2 badge badge-accent badge-outline badge-sm">
+							{topic}
+						</div>
+					))}
+				</div>
 				<div className="card-actions">
 					<div className="mr-2 badge badge-info badge-outline badge-lg">
 						<FaEye className="mr-2" /> {watchers_count}
